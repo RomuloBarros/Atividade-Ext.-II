@@ -1,0 +1,77 @@
+import random
+from mensagens import mensagens  # Importando a lista de mensagens
+
+# Definindo as credenciais
+usuario = "Romulo"
+senha = "senha"
+
+# Função para realizar o login
+def login():
+    print("Bem-Vindo ao App Mind")
+    user_input = input("Email ID: ")
+    password_input = input("Password: ")
+
+    if user_input == usuario and password_input == senha:
+        print("Login bem-sucedido!")
+        return True
+    else:
+        print("Usuário ou senha incorretos.")
+        return False
+
+# Função para mostrar uma mensagem aleatória
+def mostrar_mensagem_aleatoria():
+    mensagem_aleatoria = random.choice(mensagens)
+    print(f"\nMensagem aleatória: {mensagem_aleatoria}\n")
+
+# Função para solicitar a escolha do usuário
+def solicitar_escolha():
+    while True:
+        print(f"\nDigite um número entre 1 e {len(mensagens)} para ver a mensagem correspondente, ou 'sair' para encerrar:")
+        escolha = input("Escolha: ")
+
+        if escolha.lower() == "sair":
+            print("Saindo... Até mais!")
+            break
+
+        try:
+            escolha = int(escolha)
+            # Esta condição garante que as escolhas válidas sejam de 1 a 20
+            if 1 <= escolha <= len(mensagens):  # Aqui garantimos que a escolha vai de 1 a 20
+                print(f"Você escolheu: {mensagens[escolha - 1]}")
+            else:
+                print("Escolha inválida. Tente novamente.")
+        except ValueError:
+            print("Por favor, digite um número válido ou 'sair'.")
+
+# Execução do programa
+if login():
+    mostrar_mensagem_aleatoria()
+    solicitar_escolha()
+
+# mensagens.py
+mensagens = [
+    "Olá! Como você está?",
+    "Hoje é um ótimo dia!",
+    "O impossível é desculpa para o desistente!",
+    "Aproveite seu dia!",
+    "Continue aprendendo!",
+    "A vida é uma aventura!",
+    "Nunca pare de sonhar!",
+    "Seja a mudança que você deseja ver.",
+    "A persistência é o caminho do êxito.",
+    "O importante é nunca parar de questionar.",
+    "A gratidão é a memória do coração.",
+    "Cada dia é uma nova oportunidade.",
+    "A felicidade é um estado de espírito.",
+    "A simplicidade é o último grau de sofisticação.",
+    "O sucesso é a soma de pequenos esforços.",
+    "A vida é feita de escolhas.",
+    "O futuro pertence àqueles que acreditam em seus sonhos.",
+    "O verdadeiro valor das coisas é invisível.",
+    "A vida é como andar de bicicleta. Para manter o equilíbrio, você deve continuar em movimento.",
+    "Sonhe grande e ouse falhar.",
+    "Acredite que você pode e você está no meio do caminho."
+]
+
+
+
